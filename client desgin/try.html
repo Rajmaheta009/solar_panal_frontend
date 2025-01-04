@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Power Projects Slider</title>
+    <!-- Include Owl Carousel CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+        
+        .slider-container {
+            width: 90%;
+            max-width: 1200px;
+            background: white;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+        
+        .title {
+            text-align: center;
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+        
+        .owl-carousel .item {
+            text-align: center;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ddd;
+        }
+        
+        .owl-carousel .item img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+        
+        .owl-carousel .item h4 {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        
+        .owl-nav button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+        }
+        
+        .owl-nav button:hover {
+            background: #0056b3;
+        }
+        
+        .owl-nav button.owl-prev {
+            position: absolute;
+            left: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .owl-nav button.owl-next {
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .control-buttons {
+            position: absolute;
+            top: -30px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .control-buttons button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        
+        .control-buttons button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="slider-container">
+        <div class="control-buttons">
+            <button id="play">Play</button>
+            <button id="pause">Pause</button>
+        </div>
+        <h2 class="title">Best Solar Power Installation Project</h2>
+        <div class="owl-carousel">
+            <div class="item">
+                <img src="https://via.placeholder.com/200x100?text=Adani" alt="Adani">
+                <h4>Turnkey Project of Solar Panel at Adani</h4>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/200x100?text=Bajrang" alt="Bajrang">
+                <h4>Solar Panel Installation – Bajrang</h4>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/200x100?text=Bakeri" alt="Bakeri">
+                <h4>Bakeri EPC Solar Project</h4>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/200x100?text=Cubit" alt="Cubit">
+                <h4>Solar EPC Solution at Cubit</h4>
+            </div>
+            <div class="item">
+                <img src="https://via.placeholder.com/200x100?text=Karnavati" alt="Karnavati">
+                <h4>Industrial Solar Panel Installation Karnavati</h4>
+            </div>
+        </div>
+    </div>
+
+    <!-- Include jQuery and Owl Carousel JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            const owl = $('.owl-carousel').owlCarousel({
+                loop: true,
+                margin: 10,
+                nav: true,
+                autoplay: true,
+                autoplayTimeout: 3000,
+                autoplayHoverPause: true,
+                responsive: {
+                    0: {
+                        items: 1
+                    },
+                    600: {
+                        items: 3
+                    },
+                    1000: {
+                        items: 5
+                    }
+                },
+                navText: [
+                    '<i class="fas fa-chevron-left"></i>',
+                    '<i class="fas fa-chevron-right"></i>'
+                ]
+            });
+
+            $('#play').on('click', function() {
+                owl.trigger('play.owl.autoplay', [3000]);
+            });
+
+            $('#pause').on('click', function() {
+                owl.trigger('stop.owl.autoplay');
+            });
+        });
+    </script>
+</body>
+
+</html>

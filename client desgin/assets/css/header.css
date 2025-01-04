@@ -1,0 +1,8 @@
+.navbar-green {
+    background-color: #006400;
+    /* Dark Green */
+}
+
+.navbar-green a {
+    color: white !important;
+}

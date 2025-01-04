@@ -1,0 +1,97 @@
+/* Info Bar Styles */
+
+.info-bar {
+    display: flex;
+    background-color: #ff6600;
+    /* Orange background */
+    padding: 10px;
+    gap: 15px;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+}
+
+.info-bar a {
+    text-decoration: none;
+    font-size: 14px;
+    padding: 5px 10px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.info-bar a:hover {
+    background-color: #003366;
+    /* Blue hover effect */
+    color: white;
+    border-radius: 5px;
+}
+
+
+/* Center and align dropdown with the rest of the menu */
+
+.info-bar .dropdown {
+    display: inline-block;
+    position: relative;
+}
+
+
+/* Dropdown Menu - Initially hidden */
+
+.dropdown-menu {
+    background-color: #003366;
+    /* Blue background for the dropdown */
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    display: none;
+    /* Initially hidden */
+}
+
+
+/* Nested Dropdown Menu for Solar Panel */
+
+.nested-dropdown {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    /* Position nested dropdown to the right */
+    display: none;
+    /* Initially hidden */
+}
+
+
+/* Dropdown Items */
+
+.dropdown-item {
+    color: white;
+    /* White text for dropdown items */
+    padding: 10px 15px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.dropdown-item:hover {
+    background-color: #ff6600;
+    /* Orange hover effect */
+    color: white;
+}
+
+
+/* Show the dropdown when hovering over the parent dropdown */
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+    /* Show the dropdown */
+}
+
+
+/* Show the nested dropdown when hovering over the Solar Panel item */
+
+.dropdown-menu li:hover>.nested-dropdown {
+    display: block;
+    /* Show the nested dropdown */
+}
+
+.dropdown-menu>li:hover .dropdown-menu-sub {
+    display: block;
+}

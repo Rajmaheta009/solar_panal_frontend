@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Navigation Menu with Dropdowns</title>
+    <!-- Bootstrap CSS (Make sure to include Bootstrap CSS) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Navbar */
+        
+        .navbar {
+            background-color: #003366;
+        }
+        
+        .navbar-brand {
+            color: white;
+        }
+        
+        .navbar-nav .nav-link {
+            color: white;
+        }
+        
+        .navbar-nav .nav-link:hover {
+            color: #ff6600;
+        }
+        /* Info Bar */
+        
+        .info-bar {
+            background-color: #ff6600;
+            padding: 10px;
+        }
+        /* Dropdown */
+        
+        .dropdown-menu {
+            background-color: #003366;
+        }
+        
+        .dropdown-item {
+            color: white;
+        }
+        
+        .dropdown-item:hover {
+            background-color: #ff6600;
+        }
+        /* Nested Dropdown */
+        
+        .dropdown-menu .dropdown-menu {
+            position: absolute;
+            top: 0;
+            left: 100%;
+            background-color: #003366;
+        }
+        /* Responsive adjustments */
+        
+        @media (max-width: 768px) {
+            .navbar-collapse {
+                text-align: center;
+            }
+            .d-flex {
+                flex-direction: column;
+                margin-top: 10px;
+            }
+            .info-bar .dropdown {
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Top Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand text-white fw-bold" href="#">
+                <img src="assets/image/WhatsApp Image 2024-12-05 at 15.54.01_831cf6ce.jpg" alt="Grace Logo" style="height: 40px;"> Grace <span class="text-warning">Go Green, Go Solar</span>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+    </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">About Us</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Clients</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contact Us</a></li>
+                </ul>
+                <div class="d-flex ms-3">
+                    <span class="text-white me-3"><i class="fas fa-envelope"></i> user@gracerenew.com</span>
+                    <span class="text-white"><i class="fas fa-phone"></i> +91 1234567890</span>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Info Bar -->
+    <div class="info-bar" style="text-decoration: none;">
+        <div class="dropdown">
+            <a class="dropdown-toggle text-white" href="#" role="button" id="productsDropdown" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
+            <ul class="dropdown-menu" aria-labelledby="productsDropdown">
+                <li>
+                    <a class="dropdown-item text-white" href="#">Solar Panel</a>
+                    <!-- Nested Dropdown for Solar Panel -->
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item text-white" href="#">Mono Crystalline Panel</a></li>
+                        <li><a class="dropdown-item text-white" href="#">Poly Crystalline Panel</a></li>
+                        <li><a class="dropdown-item text-white" href="#">Bifacial Panel</a></li>
+                        <li><a class="dropdown-item text-white" href="#">Half Cut Solar Panel</a></li>
+                        <li><a class="dropdown-item text-white" href="#">Mono Perc Solar Module</a></li>
+                        <li><a class="dropdown-item text-white" href="#">Merlin Flexible Module</a></li>
+                    </ul>
+                </li>
+                <li><a class="dropdown-item text-white" href="#">Module Mounting Structure</a></li>
+                <li><a class="dropdown-item text-white" href="#">Inverter</a></li>
+                <li><a class="dropdown-item text-white" href="#">Solar Tracking System</a></li>
+                <li><a class="dropdown-item text-white" href="#">ESS (Energy Storage System)</a></li>
+            </ul>
+        </div>
+        <a class="text-white ms-3" href="#">PPA</a>
+        <a class="text-white ms-3" href="#">Services</a>
+        <a class="text-white ms-3" href="#">Knowledge</a>
+        <a class="text-white ms-3" href="#">Application</a>
+        <a class="text-white ms-3" href="#">Download</a>
+        <a class="text-white ms-3" href="#">Projects</a>
+        <a class="text-white ms-3" href="#">Career</a>
+        <a class="text-white ms-3" href="#">Dealership</a>
+    </div>
+
+    <!-- Bootstrap JS (Make sure to include Bootstrap JS) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
