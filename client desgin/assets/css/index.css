@@ -230,25 +230,25 @@ video {
     color: #333;
 }
 
-.owl-carousel .items {
+.owls-carousel .items {
     text-align: center;
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid #ddd;
 }
 
-.owl-carousel .items img {
+.owls-carousel .items img {
     max-width: 100%;
     height: auto;
     margin-bottom: 10px;
 }
 
-.owl-carousel .items h4 {
+.owls-carousel .items h4 {
     font-size: 16px;
     margin: 5px 0;
 }
 
-.owl-nav button {
+.owls-nav button {
     background: #007bff;
     color: white;
     border: none;
@@ -258,18 +258,18 @@ video {
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
-.owl-nav button:hover {
+.owls-nav button:hover {
     background: #0056b3;
 }
 
-.owl-nav button.owl-prev {
+.owls-nav button.owl-prev {
     position: absolute;
     left: -40px;
     top: 50%;
     transform: translateY(-50%);
 }
 
-.owl-nav button.owl-next {
+.owls-nav button.owl-next {
     position: absolute;
     right: -40px;
     top: 50%;
