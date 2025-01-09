@@ -215,11 +215,9 @@ video {
 }
 
 .slider-container {
-    width: 90%;
-    max-width: 1200px;
-    background: white;
-    padding: 20px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    background-color: transparent;
+    padding: 20px 0 0 15px;
     position: relative;
 }
 
@@ -230,17 +228,15 @@ video {
     color: #333;
 }
 
-.owls-carousel .items {
+.slider-container .owl-carousel .items {
     text-align: center;
     padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ddd;
+    width: 100%;
 }
 
 .owls-carousel .items img {
     max-width: 100%;
     height: auto;
-    margin-bottom: 10px;
 }
 
 .owls-carousel .items h4 {
@@ -248,53 +244,18 @@ video {
     margin: 5px 0;
 }
 
-.owls-nav button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 50%;
-    cursor: pointer;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+.slider-container .owl-carousel .owl-stage-outer {
+    width: 1260px;
 }
 
-.owls-nav button:hover {
-    background: #0056b3;
+.slider-container .owl-nav {
+    position: relative;
+    text-align: center;
 }
 
-.owls-nav button.owl-prev {
-    position: absolute;
-    left: -40px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.owls-nav button.owl-next {
-    position: absolute;
-    right: -40px;
-    top: 50%;
-    transform: translateY(-50%);
-}
-
-.control-buttons {
-    position: absolute;
-    top: -30px;
-    right: 20px;
-    display: flex;
-    gap: 10px;
-}
-
-.control-buttons button {
-    background: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.control-buttons button:hover {
-    background: #0056b3;
+.slider-container .owl-nav button span {
+    padding: 5px !important;
+    font-size: 50px;
 }
 
 .Customer-Testimonials p {
@@ -333,4 +294,113 @@ video {
     font-size: 17px;
     color: #000;
     line-height: 32px;
+}
+
+.collab {
+    position: relative;
+    height: 580px;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+A-204
+/* FAQ Section */
+
+.faq-section {
+    flex: 1;
+}
+
+.faq-title {
+    font-size: 1.8em;
+    color: #007bff;
+    margin-bottom: 15px;
+}
+
+.accordion {
+    background-color: #007bff;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    width: 100%;
+    text-align: left;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.accordion:hover {
+    background-color: #0056b3;
+}
+
+.panel {
+    display: none;
+    padding: 15px;
+    background-color: #f1f1f1;
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+}
+
+.panel ul {
+    padding-left: 20px;
+    list-style: disc;
+}
+
+.panel a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.panel a:hover {
+    text-decoration: underline;
+}
+
+
+/* Image Section */
+
+.image-section {
+    flex: 1;
+    text-align: center;
+}
+
+.image-container {}
+
+.image-section img {
+    width: 110%;
+    height: 80%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.image-container .row {
+    gap: 0;
+    padding: 10px 0 70px 0;
+}
+
+.breadcrumb-section {
+    font-size: 18px;
+    color: #007bff;
+}
+
+.solar-services h5 {
+    font-weight: bold;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.services-links a {
+    font-size: 18px;
+    text-decoration: none;
+    color: #007bff;
+    margin: 0 5px;
+}
+
+.services-links a:hover {
+    text-decoration: underline;
 }

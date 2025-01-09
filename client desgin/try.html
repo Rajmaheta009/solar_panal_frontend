@@ -4,173 +4,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solar Power Projects Slider</title>
-    <!-- Include Owl Carousel CSS -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+    <title>FAQ Section with Collapsible Panels</title>
     <style>
-        body {
-            font-family: Arial, sans-serif;
+        /* General Reset */
+        
+        * {
             margin: 0;
             padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: #f4f4f4;
-        }
-        
-        .slider-container {
-            width: 90%;
-            max-width: 1200px;
-            background: white;
-            padding: 20px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            position: relative;
-        }
-        
-        .title {
-            text-align: center;
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: #333;
-        }
-        
-        .owl-carousel .item {
-            text-align: center;
-            padding: 10px;
             box-sizing: border-box;
-            border: 1px solid #ddd;
         }
         
-        .owl-carousel .item img {
-            max-width: 100%;
-            height: auto;
-            margin-bottom: 10px;
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
         }
         
-        .owl-carousel .item h4 {
-            font-size: 16px;
-            margin: 5px 0;
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
-        .owl-nav button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
-        }
-        
-        .owl-nav button:hover {
-            background: #0056b3;
-        }
-        
-        .owl-nav button.owl-prev {
-            position: absolute;
-            left: -40px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .owl-nav button.owl-next {
-            position: absolute;
-            right: -40px;
-            top: 50%;
-            transform: translateY(-50%);
-        }
-        
-        .control-buttons {
-            position: absolute;
-            top: -30px;
-            right: 20px;
+        .row {
             display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        /* FAQ Section */
+        
+        .faq-section {
+            flex: 1;
+        }
+        
+        .faq-title {
+            font-size: 1.8em;
+            color: #007bff;
+            margin-bottom: 15px;
+        }
+        
+        .accordion {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px;
+            border: none;
+            width: 100%;
+            text-align: left;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
             gap: 10px;
         }
         
-        .control-buttons button {
-            background: #007bff;
-            color: white;
-            border: none;
-            padding: 5px 10px;
-            border-radius: 5px;
-            cursor: pointer;
+        .accordion img {
+            width: 25px;
+            height: 20px;
         }
         
-        .control-buttons button:hover {
-            background: #0056b3;
+        .accordion:hover {
+            background-color: #0056b3;
+        }
+        
+        .panel {
+            display: none;
+            padding: 15px;
+            background-color: #f1f1f1;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+        }
+        
+        .panel ul {
+            padding-left: 20px;
+            list-style: disc;
+        }
+        
+        .panel a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        
+        .panel a:hover {
+            text-decoration: underline;
+        }
+        /* Image Section */
+        
+        .image-section {
+            flex: 1;
+            text-align: center;
+        }
+        
+        .image-section img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 
 <body>
-    <div class="slider-container">
-        <div class="control-buttons">
-            <button id="play">Play</button>
-            <button id="pause">Pause</button>
-        </div>
-        <h2 class="title">Best Solar Power Installation Project</h2>
-        <div class="slider-carousel">
-            <div class="item">
-                <img src="https://via.placeholder.com/200x100?text=Adani" alt="Adani">
-                <h4>Turnkey Project of Solar Panel at Adani</h4>
+    <div class="container">
+        <div class="row">
+            <!-- Left Side FAQ Section -->
+            <div class="col-sm-6 faq-section">
+                <h2 class="faq-title">FAQ's</h2>
+
+                <button class="accordion">
+          <img src="images/arrow.webp" alt="arrow"> What does EPC mean in the solar industry?
+        </button>
+                <div class="panel">
+                    <p>Firstly, you must know the meaning of the EPC where E stands for Engineering, P stands for Procurement and C stands for Construction...</p>
+                    <a href="https://gracerenew.com/solar-epc-commercial-industrial.php">Learn More</a>
+                </div>
+
+                <button class="accordion">
+          <img src="images/arrow.webp" alt="arrow"> How Do Solar Panels Work?
+        </button>
+                <div class="panel">
+                    <p>The Solar Panels on installation directly absorb the photons when sunlight falls on them...</p>
+                </div>
+
+                <button class="accordion">
+          <img src="images/arrow.webp" alt="arrow"> What Are the Types of Solar Panels?
+        </button>
+                <div class="panel">
+                    <ul>
+                        <li>Monocrystalline Solar Panel</li>
+                        <li>Polycrystalline Solar Panel</li>
+                        <li>Thin-film Panels</li>
+                    </ul>
+                    <p>Each type has specific advantages. For instance, Monocrystalline panels are efficient and aesthetic...</p>
+                </div>
+
+                <button class="accordion">
+          <img src="images/arrow.webp" alt="arrow"> Advantages of Solar Energy?
+        </button>
+                <div class="panel">
+                    <ul>
+                        <li>Renewable and abundant energy source</li>
+                        <li>No pollution or global warming</li>
+                        <li>Budget-friendly and environmentally sustainable</li>
+                    </ul>
+                </div>
+
+                <button class="accordion">
+          <img src="images/arrow.webp" alt="arrow"> Best Ways to Reduce Your Electricity Bill
+        </button>
+                <div class="panel">
+                    <p>Encourage the use of solar panels to save energy and reduce electricity bills significantly...</p>
+                </div>
             </div>
-            <div class="item">
-                <img src="https://via.placeholder.com/200x100?text=Bajrang" alt="Bajrang">
-                <h4>Solar Panel Installation – Bajrang</h4>
-            </div>
-            <div class="item">
-                <img src="https://via.placeholder.com/200x100?text=Bakeri" alt="Bakeri">
-                <h4>Bakeri EPC Solar Project</h4>
-            </div>
-            <div class="item">
-                <img src="https://via.placeholder.com/200x100?text=Cubit" alt="Cubit">
-                <h4>Solar EPC Solution at Cubit</h4>
-            </div>
-            <div class="item">
-                <img src="https://via.placeholder.com/200x100?text=Karnavati" alt="Karnavati">
-                <h4>Industrial Solar Panel Installation Karnavati</h4>
+
+            <!-- Right Side Image Section -->
+            <div class="col-sm-6 image-section">
+                <img src="images/pre-subsidy-application-1.webp" alt="Solar subsidy in Gujarat">
             </div>
         </div>
     </div>
 
-    <!-- Include jQuery and Owl Carousel JS -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
     <script>
-        $(document).ready(function() {
-            const owl = $('.owl-carousel').owlCarousel({
-                loop: true,
-                margin: 10,
-                nav: true,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                autoplayHoverPause: true,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 3
-                    },
-                    1000: {
-                        items: 5
-                    }
-                },
-                navText: [
-                    '<i class="fas fa-chevron-left"></i>',
-                    '<i class="fas fa-chevron-right"></i>'
-                ]
-            });
+        document.querySelectorAll('.accordion').forEach((accordion) => {
+            accordion.addEventListener('click', () => {
+                // Toggle active class
+                accordion.classList.toggle('active');
 
-            $('#play').on('click', function() {
-                owl.trigger('play.owl.autoplay', [3000]);
-            });
-
-            $('#pause').on('click', function() {
-                owl.trigger('stop.owl.autoplay');
+                // Toggle panel visibility
+                const panel = accordion.nextElementSibling;
+                panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
             });
         });
     </script>
