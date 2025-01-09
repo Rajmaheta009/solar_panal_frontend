@@ -608,6 +608,22 @@
             });
         });
     </script>
+    <script>
+        // Function to include external HTML dynamically
+        async function loadHTML(selector, file) {
+            const element = document.querySelector(selector);
+            const response = await fetch(file);
+            if (response.ok) {
+                element.innerHTML = await response.text();
+            } else {
+                console.error("Error loading file:", file);
+            }
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+            loadHTML("header", "header.html");
+            loadHTML("footer", "footer.html");
+        });
+    </script>
 </body>
 
 </html>
