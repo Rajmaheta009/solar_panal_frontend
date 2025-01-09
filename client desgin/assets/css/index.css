@@ -186,6 +186,10 @@ video {
     line-height: 1.6;
 }
 
+.sect-container .row {
+    gap: 0;
+}
+
 .card {
     background-color: #f0f8f2;
     text-align: center;
@@ -307,7 +311,7 @@ video {
     gap: 20px;
 }
 
-A-204
+
 /* FAQ Section */
 
 .faq-section {
@@ -403,4 +407,43 @@ A-204
 
 .services-links a:hover {
     text-decoration: underline;
+}
+
+.footer-card .row {
+    gap: 0;
+}
+
+.footer-card .card {
+    border: none;
+    border-radius: 10px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.footer-card .card:hover {
+    transform: scale(1.05);
+    box-shadow: 1px 8px 15px #666;
+}
+
+.footer-card .card-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.footer-card .card-text {
+    font-size: 0.95rem;
+}
+
+.footer-card .card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.footer-card .text-primary {
+    color: #007bff !important;
+}
+
+.footer-card .text-success {
+    color: #28a745 !important;
 }
