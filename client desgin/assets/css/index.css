@@ -374,17 +374,10 @@ video {
     text-align: center;
 }
 
-.image-container {}
-
 .image-section img {
     width: 110%;
     height: 80%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.image-container .row {
-    gap: 0;
-    padding: 10px 0 70px 0;
 }
 
 .breadcrumb-section {
@@ -417,9 +410,10 @@ video {
     border: none;
     border-radius: 10px;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    img {
-        width: 100%;
-    }
+}
+
+.footer-card .card img {
+    width: 100%;
 }
 
 .footer-card .card:hover {

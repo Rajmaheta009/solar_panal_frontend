@@ -263,7 +263,7 @@
         <input type="checkbox" id="flip">
         <div class="cover">
             <div class="front">
-                <img src="assets/image/image_no_text.png" alt="">
+                <img src="image_no_text.png" alt="">
                 <div class="text">
                     <span class="text-1">Every new friend is a <br> new adventure</span>
                     <span class="text-2">Let's get connected</span>
@@ -315,6 +315,10 @@
                                 <i class="fas fa-lock"></i>
                                 <input type="password" id="signupPassword" placeholder="Enter your password" required>
                             </div>
+                            <div class="input-box">
+                                <i class="fas fa-lock"></i>
+                                <input type="tel" id="signupno" placeholder="Enter your phone number" required>
+                            </div>
                             <div class="button input-box">
                                 <input type="submit" value="Sumbit">
                             </div>
@@ -334,7 +338,7 @@
                 const email = document.getElementById("loginEmail").value;
                 const password = document.getElementById("loginPassword").value;
 
-                const response = await fetch("http://127.0.0.1:8000/api/login", {
+                const response = await fetch("http://127.0.0.1:8000/auth/login", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -348,8 +352,12 @@
                 const data = await response.json();
                 if (response.ok) {
                     alert("Login successful!");
-                    // Redirect or store token if needed
-                    window.location.href = "index.html"; // Change as needed
+                    if (data.role === "admin") {
+                        localStorage.setItem("authToken", data.access_token);
+                        window.location.href = "../Admin desgin/index.html"; // Redirect to admin panel
+                    } else {
+                        window.location.href = "../client desgin/index.html"; // Redirect to client dashboard
+                    }
                 } else {
                     alert("Login failed: " + data.message);
                 }
@@ -362,8 +370,9 @@
                 const name = document.getElementById("signupName").value;
                 const email = document.getElementById("signupEmail").value;
                 const password = document.getElementById("signupPassword").value;
+                const phonenumber = document.getElementById("signupno").value;
 
-                const response = await fetch("http://127.0.0.1:8000/api/register", {
+                const response = await fetch("http://127.0.0.1:8000/auth/register", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json"
@@ -371,7 +380,8 @@
                     body: JSON.stringify({
                         name,
                         email,
-                        password
+                        password,
+                        phonenumber
                     })
                 });
 
