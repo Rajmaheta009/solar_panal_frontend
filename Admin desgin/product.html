@@ -31,7 +31,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="login.html">Logout</a></li>
+                    <li><a class="dropdown-item" href="login.html" onclick="logoutAdmin">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -48,11 +48,11 @@
                         </a>
                         <a class="nav-link" href="user.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
-                            user
+                            Users
                         </a>
                         <a class="nav-link" href="product.html">
                             <div class="sb-nav-link-icon"><i class="fas fa-book-open"></i></div>
-                            product
+                            Products
 
                         </a>
                     </div>
@@ -67,10 +67,31 @@
             <main>
                 <div class="container-fluid px-4">
                     <h1 class="mt-4">Product</h1>
+
+                    <button style="position: absolute; top: 20px; right: 20px;" class="btn btn-success" id="addProductBtn" data-bs-toggle="modal" data-bs-target="#ProductModal">
+                        + Add Product
+                    </button>
+
                     <ol class="breadcrumb mb-4">
                         <li class="breadcrumb-item active">Product</li>
                     </ol>
 
+                    <table id="productTable" class="table table-dark table-striped">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Description</th>
+                                <th>Price</th>
+                                <th>Quantity</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <!-- Product rows will be inserted here dynamically -->
+                        </tbody>
+                    </table>
+                </div>
             </main>
             <footer class="py-4 bg-light mt-auto">
                 <div class="container-fluid px-4">
@@ -83,12 +104,189 @@
                     </div>
                 </div>
             </footer>
+            <div class="modal fade" id="ProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="ProductForm" onsubmit="addOrUpdateUser(event)">
+                                <input type="hidden" id="productId">
+                                <div class="mb-3">
+                                    <label for="productName" class="form-label">Name</label>
+                                    <input type="text" class="form-control" id="productName" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="productDescription" class="form-label">Description</label>
+                                    <textarea id="productDescription" class="form-control" required></textarea>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="productPrice" class="form-label">Price</label>
+                                    <input type="number" class="form-control" min="100" id="productPrice" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="productStock" class="form-label">Stock</label>
+                                    <input type="number" id="productStock" class="form-control" min="1" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="js/scripts.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+    <script src="js/datatables-simple-demo.js"></script>
+    <script>
+        async function fetchProducts() {
+            try {
+                const response = await fetch("http://127.0.0.1:8000/products/");
+                if (!response.ok) throw new Error("Failed to fetch products");
+
+
+                const p = await response.json();
+                console.log(p);
+
+                const tableBody = document.querySelector("#productTable tbody");
+                tableBody.innerHTML = "";
+
+                if (!p.length) {
+                    tableBody.innerHTML = "<tr><td colspan='6' class='text-center'>No products found</td></tr>";
+                    return;
+                }
+
+                let count = 0;
+                p.forEach(products => {
+                    count++;
+                    const row = document.createElement("tr");
+                    row.innerHTML = `
+                        <td>${count}</td>
+                        <td>${products.name}</td>
+                        <td>${products.description}</td>
+                        <td>${products.price}</td>
+                        <td>${products.quantity}</td>
+                        <td>
+                            <button class="btn btn-warning btn-sm" onclick="editProduct('${product.id}')">Edit</button>
+                            <button class="btn btn-danger btn-sm" onclick="deleteProduct('${product.id}')">Delete</button>
+                        </td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+            } catch (error) {
+                console.error("Error fetching product:", error);
+            }
+        }
+
+        async function addOrUpdateProduct(event) {
+            event.preventDefault();
+
+            const productId = document.getElementById("productId").value.trim();
+            const name = document.getElementById("productName").value.trim();
+            const description = document.getElementById("productDescription").value.trim();
+            const price = document.getElementById("productPrice").value.trim();
+            const stock = document.getElementById("productStock").value.trim();
+
+            const productData = {
+                name,
+                description,
+                price,
+                stock,
+                is_delete: false
+            };
+            let url = "http://127.0.0.1:8000/products/";
+            let method = "POST";
+
+            if (productId) {
+                url = `http://127.0.0.1:8000/products/${productId}`;
+                method = "PUT";
+            }
+
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(productData),
+                });
+
+                if (!response.ok) throw new Error("Failed to save product");
+
+
+                const productModal = bootstrap.Modal.getInstance(document.getElementById("ProductModal"));
+                productModal.hide();
+
+                fetchProducts();
+
+            } catch (error) {
+                console.error("Error saving product:", error);
+            }
+        }
+
+        // Attach function to form
+        document.getElementById("ProductForm").addEventListener("submit", addOrUpdateProduct);
+
+        async function editProduct(productId) {
+
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/product/${productId}`, {
+                    method: "GET",
+                });
+                if (!response.ok) throw new Error("Failed to fetch product data");
+                const product = await response.json();
+
+                document.getElementById("productId").value = product.id;
+                document.getElementById("productName").value = product.name;
+                document.getElementById("productDescription").value = product.email;
+                document.getElementById("productPrice").value = product.password;
+                document.getElementById("productStock").value = product.phonenumber;
+                document.getElementById("modalTitle").innerText = "Edit User";
+
+                const ProductModal = new bootstrap.Modal(document.getElementById("ProductModal"));
+                ProductModal.show();
+
+            } catch (error) {
+                console.error("Error fetching product data:", error);
+            }
+        }
+
+        async function deleteProduct(productId) {
+            if (!confirm("Are you sure you want to delete this product?")) return;
+            try {
+                const response = await fetch(`http://127.0.0.1:8000/products/${productId}`, {
+                    method: "DELETE",
+                });
+                if (!response.ok) throw new Error("Failed to delete product");
+                fetchProducts();
+                location.reload(); // Refresh the page to see updates
+            } catch (error) {
+                console.error("Error deleting product:", error);
+            }
+        }
+        document.getElementById("addProductBtn").addEventListener("click", function() {
+            document.getElementById("modalTitle").innerText = "Add Product"; // Update modal title
+            document.getElementById("ProductForm").reset(); // Clear form fields
+            document.getElementById("productId").value = ""; // Clear hidden userId field
+        });
+
+
+        document.getElementById("ProductForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            addOrUpdateUser();
+        });
+
+        document.addEventListener("DOMContentLoaded", fetchProducts);
+
+        function logoutAdmin() {
+            localStorage.removeItem("adminToken"); // Remove token
+            window.location.href = "../login_registration/index.html"; // Redirect to login
+        }
+    </script>
 </body>
 
 </html>

@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 30px auto;
+            background: white;
+            padding: 20px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        
+        input,
+        select,
+        button {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+        
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        button:hover {
+            background-color: #218838;
+        }
+        
+        table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #007bff;
+            color: white;
+        }
+        
+        .edit-btn {
+            background-color: #ffc107;
+            color: black;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        
+        .edit-btn:hover {
+            background-color: #e0a800;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h2>Add / Update User</h2>
+        <form id="userForm">
+            <input type="hidden" id="userId">
+            <!-- Hidden input for update -->
+            <input type="text" id="name" placeholder="Name" required><br>
+            <input type="email" id="email" placeholder="Email" required><br>
+            <input type="password" id="password" placeholder="Password" required><br>
+            <input type="text" id="phonenumber" placeholder="Phone Number" required><br>
+            <select id="role">
+                <option value="user">User</option>
+                <option value="admin">Admin</option>
+            </select><br>
+            <button type="button" onclick="addOrUpdateUser()">Submit</button>
+        </form>
+        <p id="message"></p>
+
+        <h2>User List</h2>
+        <table id="userTable">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script>
+        async function fetchUsers() {
+            const response = await fetch("http://127.0.0.1:8000/auth/users");
+            const users = await response.json();
+            const tableBody = document.querySelector("#userTable tbody");
+            tableBody.innerHTML = "";
+
+            users.forEach(user => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${user.name}</td>
+                    <td>${user.email}</td>
+                    <td>${user.phonenumber}</td>
+                    <td>${user.role}</td>
+                    <td><button class="edit-btn" onclick="editUser(${user.id})">Edit</button></td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        async function addOrUpdateUser() {
+            const userId = document.getElementById("userId").value;
+            const name = document.getElementById("name").value;
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+            const phonenumber = document.getElementById("phonenumber").value;
+            const role = document.getElementById("role").value;
+
+            const userData = {
+                name,
+                email,
+                password,
+                phonenumber,
+                role,
+                is_delete: false
+            };
+            let url = userId ? `http://127.0.0.1:8000/auth/users/${userId}` : "http://127.0.0.1:8000/auth/register";
+            let method = userId ? "PUT" : "POST";
+
+            try {
+                const response = await fetch(url, {
+                    method: method,
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(userData)
+                });
+
+                const data = await response.json();
+
+                if (!response.ok) {
+                    if (response.status === 422) {
+                        document.getElementById("message").innerText = "Error: Invalid input data!";
+                    } else {
+                        document.getElementById("message").innerText = "Error: " + data.detail;
+                    }
+                } else {
+                    document.getElementById("message").innerText = "User saved successfully!";
+                    document.getElementById("userForm").reset();
+                    fetchUsers(); // Refresh table
+                }
+            } catch (error) {
+                document.getElementById("message").innerText = "Network error!";
+            }
+        }
+
+        async function editUser(id) {
+            const response = await fetch(`http://127.0.0.1:8000/auth/users/${id}`);
+            const user = await response.json();
+
+            document.getElementById("userId").value = user.id;
+            document.getElementById("name").value = user.name;
+            document.getElementById("email").value = user.email;
+            document.getElementById("phonenumber").value = user.phonenumber;
+            document.getElementById("role").value = user.role;
+            document.getElementById("message").innerText = "Editing user: " + user.name;
+        }
+
+        window.onload = fetchUsers;
+    </script>
+
+</body>
+
+</html>
