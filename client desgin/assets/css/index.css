@@ -302,13 +302,18 @@ video {
 
 .collab {
     position: relative;
-    height: 580px;
+    height: 510px;
+}
+
+.collab2 {
+    position: relative;
+    height: 390px;
+    padding-bottom: 20px;
 }
 
 .row {
     display: flex;
     flex-wrap: wrap;
-    gap: 20px;
 }
 
 
@@ -316,10 +321,13 @@ video {
 
 .faq-section {
     flex: 1;
+    p {
+        font-size: 17px;
+    }
 }
 
 .faq-title {
-    font-size: 1.8em;
+    font-size: 20px;
     color: #007bff;
     margin-bottom: 15px;
 }
@@ -400,6 +408,13 @@ video {
 
 .services-links a:hover {
     text-decoration: underline;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 1px solid #eee
 }
 
 .footer-card .row {
