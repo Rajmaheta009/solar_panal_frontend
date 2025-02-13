@@ -156,6 +156,8 @@
             if (!response.ok);
 
             const users = await response.json();
+            console.log(users);
+
             const tableBody = document.querySelector("#userTable tbody");
             tableBody.innerHTML = "";
 

@@ -104,15 +104,15 @@
                     </div>
                 </div>
             </footer>
-            <div class="modal fade" id="ProductModal" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
+            <div class="modal fade" id="ProductModal" tabindex="-1" aria-labelledby="ProductModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h5 class="modal-title" id="addProductModalLabel">Add Product</h5>
+                            <h5 class="modal-title" id="modalTitle">Add Product</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="ProductForm" onsubmit="addOrUpdateUser(event)">
+                            <form id="ProductForm">
                                 <input type="hidden" id="productId">
                                 <div class="mb-3">
                                     <label for="productName" class="form-label">Name</label>
@@ -149,8 +149,9 @@
                 if (!response.ok) throw new Error("Failed to fetch products");
 
 
-                const p = await response.json();
-                console.log(p);
+                const data = await response.json();
+
+                const p = data.products;
 
                 const tableBody = document.querySelector("#productTable tbody");
                 tableBody.innerHTML = "";
@@ -161,15 +162,15 @@
                 }
 
                 let count = 0;
-                p.forEach(products => {
+                p.forEach(product => {
                     count++;
                     const row = document.createElement("tr");
                     row.innerHTML = `
                         <td>${count}</td>
-                        <td>${products.name}</td>
-                        <td>${products.description}</td>
-                        <td>${products.price}</td>
-                        <td>${products.quantity}</td>
+                        <td>${product.name}</td>
+                        <td>${product.description}</td>
+                        <td>${product.price}</td>
+                        <td>${product.stock}</td>
                         <td>
                             <button class="btn btn-warning btn-sm" onclick="editProduct('${product.id}')">Edit</button>
                             <button class="btn btn-danger btn-sm" onclick="deleteProduct('${product.id}')">Delete</button>
@@ -234,18 +235,19 @@
         async function editProduct(productId) {
 
             try {
-                const response = await fetch(`http://127.0.0.1:8000/product/${productId}`, {
+                const response = await fetch(`http://127.0.0.1:8000/products/${productId}`, {
                     method: "GET",
                 });
                 if (!response.ok) throw new Error("Failed to fetch product data");
-                const product = await response.json();
+                const data = await response.json();
+                const product = data.product;
 
                 document.getElementById("productId").value = product.id;
                 document.getElementById("productName").value = product.name;
-                document.getElementById("productDescription").value = product.email;
-                document.getElementById("productPrice").value = product.password;
-                document.getElementById("productStock").value = product.phonenumber;
-                document.getElementById("modalTitle").innerText = "Edit User";
+                document.getElementById("productDescription").value = product.description;
+                document.getElementById("productPrice").value = product.price;
+                document.getElementById("productStock").value = product.stock;
+                document.getElementById("modalTitle").innerText = "Edit product";
 
                 const ProductModal = new bootstrap.Modal(document.getElementById("ProductModal"));
                 ProductModal.show();
