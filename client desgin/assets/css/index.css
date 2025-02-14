@@ -417,6 +417,10 @@ hr {
     border-top: 1px solid #eee
 }
 
+.footer-card {
+    padding: 0 0 10% 0;
+}
+
 .footer-card .row {
     gap: 0;
 }
@@ -458,4 +462,55 @@ hr {
 
 .footer-card .text-success {
     color: #28a745 !important;
+}
+
+#footer-01 {
+    background: #d4dad3;
+    padding: 40px 0 40px 0;
+    color: #000;
+    font-weight: 400;
+    background-repeat: repeat;
+    background-position: center center;
+    clear: both;
+}
+
+.footer h3 {
+    font-size: 22px;
+    color: #353d65;
+    font-weight: bolder;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+}
+
+.footer ul {
+    padding: 0;
+    margin: 0;
+}
+
+.col-sm-4 {
+    width: 33.33333333%;
+}
+
+.social {
+    margin: 0 0 10px;
+}
+
+.fotter-img {
+    text-align: center;
+}
+
+.footer ul li {
+    border-bottom: 1px dashed #585858;
+    list-style: none;
+    line-height: 40px;
+    text-align: left;
+}
+
+.footer ul li a {
+    color: #000;
+    line-height: 40px;
+    list-style: none;
+    font-size: 16px;
+    text-decoration: none;
 }

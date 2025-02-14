@@ -1,9 +1,19 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Fetch the header.html content and insert it into the header-container
-    fetch('header.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('header-container').innerHTML = data;
+    const headerPlaceholder = document.getElementById("home-placeholder");
+
+    // Fetch the navbar HTML file
+    fetch("header.html")
+        .then((response) => {
+            if (!response.ok) {
+                throw new Error("Failed to load header");
+            }
+            return response.text();
         })
-        .catch(error => console.error('Error loading header:', error));
+        .then((html) => {
+            // Insert the navbar content into the placeholder
+            headerPlaceholder.innerHTML = html;
+        })
+        .catch((error) => {
+            console.error("Error loading header:", error);
+        });
 });

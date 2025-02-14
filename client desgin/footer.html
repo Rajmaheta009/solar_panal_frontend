@@ -4,15 +4,109 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        Footer
-    </title>
+    <title>Footer Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        .footer {
+            background: #d3d3d3;
+            padding: 20px 0;
+        }
+        
+        .footer h5 {
+            color: #2c2c2c;
+            font-weight: bold;
+        }
+        
+        .footer ul {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer ul li {
+            padding: 5px 0;
+        }
+        
+        .footer ul li a {
+            text-decoration: none;
+            color: black;
+        }
+        
+        .footer ul li a:hover {
+            text-decoration: underline;
+        }
+        
+        .contact-info p {
+            margin: 5px 0;
+        }
+        
+        .social-icons a {
+            display: inline-block;
+            margin: 5px;
+            font-size: 20px;
+            color: black;
+        }
+        
+        .social-icons a:hover {
+            color: #007bff;
+        }
+        
+        .footer img {
+            max-width: 150px;
+        }
+        
+        .footer .map {
+            width: 100%;
+            max-width: 250px;
+        }
+    </style>
 </head>
 
 <body>
-
+    <footer class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>INFORMATION</h5>
+                    <ul>
+                        <li><a href="#">Solar Panel</a></li>
+                        <li><a href="#">Inverter</a></li>
+                        <li><a href="#">Module Mounting Structure</a></li>
+                        <li><a href="#">Power Purchase Agreement</a></li>
+                        <li><a href="#">EPC Projects</a></li>
+                        <li><a href="#">Solar EPC Residential</a></li>
+                        <li><a href="#">Solar EPC Commercial & Industrial</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-4 contact-info">
+                    <h5>CONTACT INFO</h5>
+                    <p><strong>Company:</strong> Grace Renewable Energy Limited.</p>
+                    <p><strong>Address:</strong> 406 4th floor, Sarthik Square, Ahmedabad, India</p>
+                    <p><strong>Contact No:</strong> +91 90994 62222</p>
+                    <p><strong>Email:</strong> info@gracerenew.com</p>
+                    <p><strong>Website:</strong> www.gracerenew.com</p>
+                    <div class="social-icons">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-pinterest"></i></a>
+                    </div>
+                </div>
+                <div class="col-md-4 text-center">
+                    <img src="make-in-india.png" alt="Make in India">
+                    <img src="iso-9001.png" alt="ISO 9001 Certified">
+                    <iframe class="map" src="https://www.google.com/maps/embed?..." frameborder="0"></iframe>
+                </div>
+            </div>
+        </div>
+    </footer>
 </body>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js">
-</script>
 
 </html>

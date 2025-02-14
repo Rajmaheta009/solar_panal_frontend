@@ -1,4 +1,3 @@
-<?php include('header.html') ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -505,7 +504,7 @@
                 <!-- Blog Card 2 -->
                 <div class="col-md-4">
                     <div class="card shadow-sm">
-                        <img src="https://gracerenew.com/images/understanding-solar-panels.jpg" class="card-img-top" alt="The Future of Solar Energy">
+                        <img src="https://gracerenew.com/images/the-future-of-solar-1.webp" class="card-img-top" alt="The Future of Solar Energy">
                         <div class="card-body">
                             <h5 class="card-title text-primary">The Future of Solar Energy</h5>
                             <p class="card-text text-muted">By admin / 08 Apr 2024</p>
@@ -518,7 +517,7 @@
                 <!-- Blog Card 3 -->
                 <div class="col-md-4">
                     <div class="card shadow-sm">
-                        <img src="https://gracerenew.com/images/understanding-solar-panels.jpg" class="card-img-top" alt="How Solar Energy Is Changing The World">
+                        <img src="https://gracerenew.com/images/solar-energy.webp" class="card-img-top" alt="How Solar Energy Is Changing The World">
                         <div class="card-body">
                             <h5 class="card-title text-primary">How Solar Energy Is Changing The World</h5>
                             <p class="card-text text-muted">By admin / 30 Dec 2023</p>
@@ -531,104 +530,146 @@
             </div>
         </div>
     </div>
-    <!-- Bootstrap JS -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js "></script>
-    <script>
-        $(document).ready(function() {
-            $("#slider").owlCarousel({
-                loop: true,
-                margin: 10,
-                nav: false,
-                autoplay: true,
-                autoplayTimeout: 3000,
-                autoplayHoverPause: true,
-                items: 1,
-                responsive: {
-                    0: {
-                        items: 1
-                    },
-                    600: {
-                        items: 1
-                    },
-                    1000: {
-                        items: 1
-                    }
-                }
-            });
-
-            $('#company').owlCarousel({
-                loop: true,
-                margin: 10,
-                responsiveClass: true,
-                autoplayTimeout: 3000,
-                autoplay: true,
-                responsive: {
-                    0: {
-                        items: 1,
-                        nav: true
-                    },
-                    600: {
-                        items: 3,
-                        nav: false
-                    },
-                    1000: {
-                        items: 5,
-                        nav: true,
-                        margin: 20
-                    }
-                }
-            })
-        });
-
-
-
-        $(document).ready(function() {
-            $("#about ").owlCarousel({
-                loop: true, // Enables infinite looping
-                margin: 10, // Space between items
-                autoplay: true, // Enables auto-play
-                autoplayTimeout: 3000, // Time between transitions (in milliseconds)
-                autoplayHoverPause: true, // Pauses on hover
-                responsive: {
-                    0: {
-                        items: 1 // Number of items visible on small screens
-                    },
-                    600: {
-                        items: 1 // Number of items visible on medium screens
-                    },
-                    1000: {
-                        items: 1 // Number of items visible on large screens
-                    }
-                }
-            });
-        });
-        document.querySelectorAll('.accordion').forEach((accordion) => {
-            accordion.addEventListener('click', () => {
-                // Toggle active class
-                accordion.classList.toggle('active');
-
-                // Toggle panel visibility
-                const panel = accordion.nextElementSibling;
-                panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
-            });
-        });
-    </script>
-    <script>
-        // Function to include external HTML dynamically
-        async function loadHTML(selector, file) {
-            const element = document.querySelector(selector);
-            const response = await fetch(file);
-            if (response.ok) {
-                element.innerHTML = await response.text();
-            } else {
-                console.error("Error loading file:", file);
-            }
-        }
-        document.addEventListener("DOMContentLoaded", () => {
-            loadHTML("header", "header.html");
-            loadHTML("footer", "footer.html");
-        });
-    </script>
+    <div id="footer-01">
+        <div class="container wel-title">
+            <div class="row footer">
+                <div class="col-sm-3">
+                    <h3>INFORMATION</h3>
+                    <ul>
+                        <li><a href="solar_panal.html" title="Solar Panel"><i class="fa fa-chevron-right" aria-hidden="true"></i> Solar Panel</a></li>
+                        <li><a href="inverter.html" title="Inverter"><i class="fa fa-chevron-right" aria-hidden="true"></i> Inverter</a></li>
+                        <li><a href="solar-pv-module.php"><i class="fa fa-chevron-right" aria-hidden="true"></i> Module Mounting Structure</a></li>
+                        <li><a href="ppa-power-purchase-agreement.php" title="Module Mounting Structure"><i class="fa fa-chevron-right" aria-hidden="true"></i> Power Purchase Agreement</a></li>
+                        <li><a href="epc-projects.php" title="EPC Projects"><i class="fa fa-chevron-right" aria-hidden="true"></i> EPC Projects</a></li>
+                        <li><a href="solar-epc-residential.php" title="Solar EPC Residential"><i class="fa fa-chevron-right" aria-hidden="true"></i> Solar EPC Residential</a></li>
+                        <li><a href="solar-epc-commercial-industrial.php" title="Solar EPC Commercial And Industrial"><i class="fa fa-chevron-right" aria-hidden="true"></i> Solar EPC Commercial &amp; Industrial</a></li>
+                        <li><a href="frequently-asked-questions.pdf" title="FAQ - Solar Panel System"><i class="fa fa-chevron-right" aria-hidden="true"></i>FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-4">
+                    <h3>CONTACT INFO</h3>
+                    <ul>
+                        <li>
+                            <p><span style="color:#000;">Company : </span><strong>Grace Renewable Energy Limited.</strong></p>
+                        </li>
+                        <li>
+                            <p><span style="color:#000;">Address : </span>406 4th floor, Sarthik Square, Above Half Ticket, Near Honest Restaurant Pakwan Cross Road, <br> SG Highway, Ahmedabad-380054, Gujarat, India.</p>
+                        </li>
+                        <li>
+                            <p><span style="color:#000;">Contact No : </span>+91 7600230222</p>
+                        </li>
+                        <li><strong>Email Id : </strong><a href="mailto:rajmaheta2008@gmail.com &amp;Subject=**** Email From https://gracerenew.com/ Powered By : #1 Vinayak InfoSoft *****" title="Raj maheta.com">Rajmaheta.com</a></li>
+                        <li><strong>Website : </strong><a href="index.html" title="Grace Renewable Energy">www.gracerenew.com</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-5 fotter-img all-img"> <img src="https://gracerenew.com/images/makeinindia.webp" width="449" height="174" loading="lazy" alt="Make in india - Solar EPC Contractor">
+                </div>
+            </div>
+        </div>
+    </div>
 </body>
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js "></script>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const headerPlaceholder = document.getElementById("home-placeholder");
+
+        // Fetch the navbar HTML file
+        fetch("header.html")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to load header");
+                }
+                return response.text();
+            })
+            .then((html) => {
+                // Insert the navbar content into the placeholder
+                headerPlaceholder.innerHTML = html;
+            })
+            .catch((error) => {
+                console.error("Error loading header:", error);
+            });
+    });
+</script>
+<script>
+    $(document).ready(function() {
+        $("#slider").owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: false,
+            autoplay: true,
+            autoplayTimeout: 3000,
+            autoplayHoverPause: true,
+            items: 1,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 1
+                },
+                1000: {
+                    items: 1
+                }
+            }
+        });
+
+        $('#company').owlCarousel({
+            loop: true,
+            margin: 10,
+            responsiveClass: true,
+            autoplayTimeout: 3000,
+            autoplay: true,
+            responsive: {
+                0: {
+                    items: 1,
+                    nav: true
+                },
+                600: {
+                    items: 3,
+                    nav: false
+                },
+                1000: {
+                    items: 5,
+                    nav: true,
+                    margin: 20
+                }
+            }
+        })
+    });
+
+
+
+    $(document).ready(function() {
+        $("#about ").owlCarousel({
+            loop: true, // Enables infinite looping
+            margin: 10, // Space between items
+            autoplay: true, // Enables auto-play
+            autoplayTimeout: 3000, // Time between transitions (in milliseconds)
+            autoplayHoverPause: true, // Pauses on hover
+            responsive: {
+                0: {
+                    items: 1 // Number of items visible on small screens
+                },
+                600: {
+                    items: 1 // Number of items visible on medium screens
+                },
+                1000: {
+                    items: 1 // Number of items visible on large screens
+                }
+            }
+        });
+    });
+    document.querySelectorAll('.accordion').forEach((accordion) => {
+        accordion.addEventListener('click', () => {
+            // Toggle active class
+            accordion.classList.toggle('active');
+
+            // Toggle panel visibility
+            const panel = accordion.nextElementSibling;
+            panel.style.display = panel.style.display === 'block' ? 'none' : 'block';
+        });
+    });
+</script>
 
 </html>
