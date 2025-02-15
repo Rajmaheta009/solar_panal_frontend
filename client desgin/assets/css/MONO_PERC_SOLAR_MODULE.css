@@ -4,6 +4,15 @@
     box-sizing: border-box;
 }
 
+.container {
+    width: 1280px;
+}
+
+.row {
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
 .banner-bg-1 {
     background: #f7f7f7;
     padding: 45px 0 15px 0;
@@ -25,19 +34,6 @@
         margin: 0 0;
         text-transform: capitalize;
     }
-}
-
-.well-part {
-    padding: 30px 0;
-}
-
-.container {
-    width: 1280px;
-}
-
-.row {
-    margin-right: -15px;
-    margin-left: -15px;
 }
 
 .col-sm-8 {
