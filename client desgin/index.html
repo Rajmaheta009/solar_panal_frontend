@@ -27,7 +27,8 @@
 </head>
 
 <body>
-    <div class="container mt-4">
+    <div id="home-placeholder"></div>
+    <div class="container mt-4" style="max-width: 1303px;">
         <!-- Owl Carousel -->
         <div id="slider" class="owl-carousel owl-theme">
             <div class="item"><img src="https://gracerenew.com/images/new-banner-02.webp" alt="Solar Image 1"></div>
@@ -91,7 +92,7 @@
                         </div>
                         <div class="flip-card-back">
                             <h3 style="text-align: center;">
-                                <a href="solar-inverter.php">INVERTER</a>
+                                <a href="inverter.html">INVERTER</a>
                             </h3>
                             <p>Grace provides everything associated with Solar under one-roof and DC to AC power inverter is one of them, which is an imperative part of the any solar system, where produced electricity is required in the form of AC.</p>
                         </div>
@@ -108,7 +109,7 @@
                         </div>
                         <div class="flip-card-back">
                             <h3 style="text-align: center;">
-                                <a href="solar-panel.php">SOLAR PANEL</a>
+                                <a href="solar_panal.html">SOLAR PANEL</a>
                             </h3>
                             <p>Grace is a distinguished manufacturer of panels for advanced and perfect quality range of photovoltaic solar panels manufacturer in Gujarat, It has proven its worthiness in industrial as well as residential applications.</p>
                         </div>
@@ -125,7 +126,7 @@
                         </div>
                         <div class="flip-card-back">
                             <h3 style="text-align: center;">
-                                <a href="solar-battery.php">MODULE MOUNTING STRUCTURES</a>
+                                <a href="solar_pv_module.html">MODULE MOUNTING STRUCTURES</a>
                             </h3>
                             <p>Grace is a being a top notch name in the solar market for conveying quality in every product, among solar mounting structure is one, configured to deliver most versatile forms of the solar mounting structure that can be set
                                 to a fixed angle or adjusted to specific degree as per the requirement.</p>
@@ -530,6 +531,7 @@
             </div>
         </div>
     </div>
+    <div id="footer-placeholder"></div>
 
 </body>
 <!-- Bootstrap JS -->
@@ -540,6 +542,26 @@
 
         // Fetch the navbar HTML file
         fetch("header.html")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to load header");
+                }
+                return response.text();
+            })
+            .then((html) => {
+                // Insert the navbar content into the placeholder
+                headerPlaceholder.innerHTML = html;
+            })
+            .catch((error) => {
+                console.error("Error loading header:", error);
+            });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const headerPlaceholder = document.getElementById("footer-placeholder");
+
+        // Fetch the navbar HTML file
+        fetch("footer.html")
             .then((response) => {
                 if (!response.ok) {
                     throw new Error("Failed to load header");

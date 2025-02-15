@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mono_Solar_Panel</title>
+    <link rel="stylesheet" href="assets/css/BIFACIAL_PANEL.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div id="home-placeholder"></div>
+    <div class="banner-area banner-bg-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="banner text89">
+                        <h1>HALF CUT SOLAR PANEL / HALF CELL SOLAR PANEL</h1>
+                        <ul class="page-title-link">
+                            <li><a href="index.html">Home</a></li> /
+                            <li><a href="product.html">Product</a></li> /
+                            <li><a href="solar_panal.html">Solar Panal</a></li> /
+                            <li>HALF CUT SOLAR PANEL / HALF CELL SOLAR PANEL</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="well-part">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-8">
+                    <div class="product_dtl">
+                        <!--<p>Keeping pace with the solar technology, Grace Solar is here with one more  innovative range of the solar panel, renowned as a half cut solar panel / half  cell solar panel that is designed to uplift solar panel performance. These are  basically silicon solar cells that have been cut in half using a laser cutter  to augment the performance and durability of the solar panel over traditional  ones. </p>
+        <p>This  high performance half cut solar panel is becoming buzz in the market for its  abundant benefits, which we have stocked up to provide you instant access. We  are Ahmedabad based EPC solar service provider skilled to successfully execute  complete EPC solutions for any scale project in India as well as foreign countries  at the best prices. <br>					  </p>-->
+                        <p>Grace Solar associated with manufacturing half-cut solar panel of ADANI SOLAR with a firm commitment to quality. Half cut cell modules have solar cells that are cut in half, which upgrade the module’s performance and durability.</p>
+                        <p>Traditional in solar panel have 60- and 72-cell panels but in half cut solar module have 120 and 144 half-cut cells, respectively. When solar cells are halved, their current is also halved, so resistive losses are lowered and the
+                            cells can produce a little more power. Smaller cells reduced mechanical stresses, so there is a decreased opportunity for cracking &amp; losses. Half-cell modules have higher output ratings and are more reliable than traditional
+                            panels.
+                        </p>
+                        <p>Thus half-cut cells divides the internal current in the system and ameliorate its performance, longevity and shade tolerance. And the results becomes - power loss is proportional to current, half-cut solar panels&nbsp;reduce the
+                            power loss by a factor of 4 which increases the power output.</p>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="images-part"> <img src="https://gracerenew.com/images/half-cut-panel.webp" alt="Merlin Flexible Module"> </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 package">
+                    <div class="product_dtl">
+                        <h3>Major Benefits of Half Cut Solar Panel:</h3>
+                        <div class="point">1. Lower Resistive Losses</div>
+                        <p>Basically, in solar panel the resistive power losses occur when electrical current passed through the cell interconnection. While these solar cells cut in half, the current is divided. This decreased current in turns lower resistive
+                            losses and improves the performance. This cut cell solar module design claims to increase the output by 2.5% over a full sized cell and 9 to 10 W per panel.</p>
+                        <br>
+                        <div class="point">2. Higher Shade Tolerance</div>
+                        <p>This half cut solar panels have six string design over the three string design of traditional one, hence is more resistance to the effects of partial shade on the panel. So when there is any partial shade on a panel, because of
+                            any leaves, branches, bird poop or dust/ debris, the shaded area will only affect a sixth of the entire panel power output, rather than one third of the output.</p>
+                        <br>
+                        <div class="point">3. Better Durability</div>
+                        <p>The six string design mitigates the cells size this in turns reduce the stress on each cell interconnection expansion and contraction as the panel heats and cools each day. Further, the small cell size bends less, hence less prone
+                            to cracking as well as it also slash downs the hot spot temperature, which ultimately lowers the risk of damaging the panel.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="footer-placeholder"></div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const headerPlaceholder = document.getElementById("home-placeholder");
+
+        // Fetch the navbar HTML file
+        fetch("header.html")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to load header");
+                }
+                return response.text();
+            })
+            .then((html) => {
+                // Insert the navbar content into the placeholder
+                headerPlaceholder.innerHTML = html;
+            })
+            .catch((error) => {
+                console.error("Error loading header:", error);
+            });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const headerPlaceholder = document.getElementById("footer-placeholder");
+
+        // Fetch the navbar HTML file
+        fetch("footer.html")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to load header");
+                }
+                return response.text();
+            })
+            .then((html) => {
+                // Insert the navbar content into the placeholder
+                headerPlaceholder.innerHTML = html;
+            })
+            .catch((error) => {
+                console.error("Error loading header:", error);
+            });
+    });
+</script>
+
+</html>

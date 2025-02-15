@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <div id="home-placeholder"></div>
     <div class="banner-area banner-bg-1">
         <div class="container">
             <div class="row">
@@ -145,7 +146,8 @@
                             various industries. We have a strong hold on <b>Solar EPC Project Consultant</b> and highly experienced and motivated team of professionals having rich experience in energy sector.</p>
                         <p>We are providing the consulting services for the investors of power sector, about understanding minute details of power generation project considering enormousness of the project task and finance related with it. As it is known
                             selecting the right place, location and understanding local geopolitical environment, installing and commissioning of the project is no doubt crucial tasks to consider while investing into Solar PV or Solar Thermal Project
-                            specifically.</p>
+                            specifically.
+                        </p>
                         <div class="package">
                             <ul>
                                 <li>We take care of all the guidelines with Pros and Cons of each state level and Central Solar power generation policy before the installation.</li>
@@ -163,6 +165,49 @@
             </div>
         </div>
     </div>
+
+    <div id="footer-placeholder"></div>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const headerPlaceholder = document.getElementById("home-placeholder");
+
+        // Fetch the navbar HTML file
+        fetch("header.html")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to load header");
+                }
+                return response.text();
+            })
+            .then((html) => {
+                // Insert the navbar content into the placeholder
+                headerPlaceholder.innerHTML = html;
+            })
+            .catch((error) => {
+                console.error("Error loading header:", error);
+            });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const headerPlaceholder = document.getElementById("footer-placeholder");
+
+        // Fetch the navbar HTML file
+        fetch("footer.html")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to load header");
+                }
+                return response.text();
+            })
+            .then((html) => {
+                // Insert the navbar content into the placeholder
+                headerPlaceholder.innerHTML = html;
+            })
+            .catch((error) => {
+                console.error("Error loading header:", error);
+            });
+    });
+</script>
 
 </html>

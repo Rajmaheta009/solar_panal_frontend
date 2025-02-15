@@ -13,6 +13,7 @@
 </head>
 
 <body>
+    <div id="home-placeholder"></div>
     <div class="banner-area banner-bg-1">
         <div class="container">
             <div class="row">
@@ -31,37 +32,70 @@
     <div class="well-part">
         <div class="container">
             <div class="row wel-text">
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="images-part">
                         <a href="solar_panal.html"><img src="https://gracerenew.com/images/poly-crystalline-panel.webp" alt="poly crystalline panel"></a>
                         <h4><a href="solar_panel.html">Solar Panel</a></h4>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="images-part">
                         <a href="solar_pv_module.html"><img src="https://gracerenew.com/images/module-mounting-structure.webp" alt="Module Mounting Structures"></a>
                         <h4><a href="solar_pv_module.html">Module Mounting Structures</a></h4>
                     </div>
                 </div>
-                <div class="col-sm-3">
+                <div class="col-sm-4">
                     <div class="images-part">
                         <a href="inverter.html"><img src="https://gracerenew.com/images/single-phase-inverter.webp" alt="single phase inverter"></a>
                         <h4><a href="inverter.html">Inverter</a></h4>
                     </div>
                 </div>
-                <div class="col-sm-3">
-                    <div class="images-part">
-                        <a href="energy-storage-system.php"><img src="https://gracerenew.com/images/li-ion1.webp" alt="ESS (Energy Storage System)
-   "></a>
-                        <h4><a href="energy-storage-system.php">ESS (Energy Storage System)
-   </a></h4>
-                    </div>
-                </div>
-
             </div>
         </div>
     </div>
 
+    <div id="footer-placeholder"></div>
 </body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const headerPlaceholder = document.getElementById("home-placeholder");
+
+        // Fetch the navbar HTML file
+        fetch("header.html")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to load header");
+                }
+                return response.text();
+            })
+            .then((html) => {
+                // Insert the navbar content into the placeholder
+                headerPlaceholder.innerHTML = html;
+            })
+            .catch((error) => {
+                console.error("Error loading header:", error);
+            });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const headerPlaceholder = document.getElementById("footer-placeholder");
+
+        // Fetch the navbar HTML file
+        fetch("footer.html")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to load header");
+                }
+                return response.text();
+            })
+            .then((html) => {
+                // Insert the navbar content into the placeholder
+                headerPlaceholder.innerHTML = html;
+            })
+            .catch((error) => {
+                console.error("Error loading header:", error);
+            });
+    });
+</script>
 
 </html>
