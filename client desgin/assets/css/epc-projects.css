@@ -47,6 +47,10 @@
     text-align: justify;
 }
 
+.col-sm-6 {
+    width: 50%;
+}
+
 .wel-text h3 {
     color: #006500;
     font-weight: 600;
@@ -63,17 +67,44 @@
     text-decoration: none;
 }
 
-.image-part img {
+.images-part img {
     width: 100%;
     height: auto;
     border: 1px solid #121212;
     padding: 4px;
 }
 
-.image-part img:hover {
+.images-part {
+    text-align: center;
+}
+
+.images-part img:hover {
     border: 1px solid orangered;
+}
+
+.product_dtl {
+    padding-bottom: 25px;
 }
 
 .pd-top {
     padding: 10px 0;
+}
+
+.product_dtl p {
+    font-size: 17px;
+    color: #000;
+    line-height: 30px;
+    text-align: justify;
+}
+
+.col-sm-12 {
+    width: 100%;
+}
+
+.product_dtl h3 {
+    color: #006500;
+    font-weight: 600;
+    line-height: 24px;
+    font-size: 18px;
+    margin: 10px 0;
 }

@@ -20,43 +20,37 @@
     margin-left: -15px;
 }
 
-.banner h1 {
-    text-align: left;
-    margin: 0 0 8px 0;
-    font-size: 32px;
-    color: #000;
-    text-transform: capitalize;
-    font-weight: 700;
-    letter-spacing: 2px;
-}
-
 .page-title-link {
     padding-left: 0;
     margin-bottom: 0;
     text-align: right;
     color: #919191;
     font-weight: 600;
-}
-
-.page-title-link li {
-    display: inline-block;
-    position: relative;
-    color: #000;
-    font-size: 16px;
-    margin: 0 0;
-    text-transform: capitalize;
+    li {
+        display: inline-block;
+        position: relative;
+        color: #000;
+        font-size: 16px;
+        margin: 0 0;
+        text-transform: capitalize;
+    }
 }
 
 .well-part {
     padding: 30px 0;
 }
 
-.col-sm-3 {
-    width: 25%;
+.col-sm-4 {
+    width: 33.33333333%;
 }
 
 .images-part {
     text-align: center;
+}
+
+a {
+    color: #337ab7;
+    text-decoration: none;
 }
 
 .images-part img {
