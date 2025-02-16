@@ -300,36 +300,93 @@ video {
     line-height: 32px;
 }
 
-.collab {
-    position: relative;
-    height: 510px;
-}
-
-.collab2 {
-    position: relative;
-    height: 390px;
-    padding-bottom: 20px;
-}
-
 .row {
     display: flex;
     flex-wrap: wrap;
 }
 
-
-/* FAQ Section */
-
-.faq-section {
-    flex: 1;
-    p {
-        font-size: 17px;
-    }
+.containerrs {
+    width: 80%;
+    margin: auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
 }
 
-.faq-title {
-    font-size: 20px;
-    color: #007bff;
+.content-section {
+    flex: 2;
+}
+
+.image-container {
+    flex: 1;
+    text-align: center;
+}
+
+.image-container img {
+    width: 100%;
+    border-radius: 5px;
+    padding: 3px;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 24px;
+    font-weight: bold;
     margin-bottom: 15px;
+}
+
+.faq-box,
+.info-box {
+    background-color: #136f2a;
+    color: white;
+    padding: 12px;
+    margin-bottom: 5px;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+    transition: 0.3s;
+    font-size: 17px;
+}
+
+.faq-box:hover,
+.info-box:hover {
+    background-color: #0f5a22;
+}
+
+.faq-box i,
+.info-box i {
+    transition: transform 0.3s ease-in-out;
+}
+
+.faq-content,
+.info-content {
+    display: none;
+    background-color: white;
+    padding: 10px;
+    border-left: 4px solid #136f2a;
+    font-size: 14px;
+    margin-bottom: 5px;
+    border-radius: 3px;
+}
+
+.faq-box.active i,
+.info-box.active i {
+    transform: rotate(180deg);
+}
+
+@media (max-width: 768px) {
+    .containerrs {
+        flex-direction: column;
+        align-items: center;
+    }
+    .content-section {
+        width: 100%;
+    }
+    .image-container {
+        width: 100%;
+    }
 }
 
 .accordion {
@@ -346,32 +403,6 @@ video {
     display: flex;
     align-items: center;
     gap: 10px;
-}
-
-.accordion:hover {
-    background-color: #0056b3;
-}
-
-.panel {
-    display: none;
-    padding: 15px;
-    background-color: #f1f1f1;
-    border: 1px solid #ddd;
-    margin-bottom: 10px;
-}
-
-.panel ul {
-    padding-left: 20px;
-    list-style: disc;
-}
-
-.panel a {
-    color: #007bff;
-    text-decoration: none;
-}
-
-.panel a:hover {
-    text-decoration: underline;
 }
 
 

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>solar-panels-for-buildings</title>
+    <link rel="stylesheet" href="assets/css/solar-panels-for-buildings.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+
+</head>
+
+<body>
+    <div id="home-placeholder"></div>
+    <div class="banner-area banner-bg-1">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="banner text89">
+                        <h1>SOLAR PANELS FOR BUILDINGS</h1>
+                        <ul class="page-title-link">
+                            <li><a href="index.html">Home</a></li> /
+                            <li><a href="product.html">Application</a></li> /
+                            <li>SOLAR PANELS FOR BUILDINGS</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="well-part">
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-8">
+                        <div class="product_dtl">
+                            <p>The <strong>Solar Panels for Buildings</strong> can be used for the variety of ways. The solar panel can be easily installed and does not depend upon the building infrastructure. Whether it's a high rise or low rise building
+                                the solar panel system can be easily installed on the top of the building.</p>
+                            <p>This offered Solar PV System for Commercial building can be used for the variety of the different ways and there different applications are stated below</p>
+                            <div class="package">
+                                <ul>
+                                    <li>No matter whether the building is the commercial or the non commercial building the solar panel can be easily installed regardless of the type, size or the nature buildings.</li>
+                                    <li>The major purpose of the solar panels installation is to provide the power supply to the building.</li>
+                                    <li>The solar panels can also be used for the solar water heating and supply of the heated water can be done which further used as per the requirements.</li>
+                                    <li>Sometimes these solar panels are also used for the thermal heating of the building and is used for the maintaining the optimum temperature of the building.</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-4">
+                        <div class="new_mg"> <img src="https://gracerenew.com/images/solar-panels-for-buildings.webp" width="100%" alt="Solar Panels for Buildings" class="img-responsive"> </div>
+                    </div>
+                    <div class="col-sm-12">
+                        <div class="point">Best Solar Panel System for Buildings in Ahmedabad</div>
+                        <div class="product_dtl">
+                            <p>Nowadays, the requirement of the solar panel in the market is increased to a great extend and seriously, there is a need to shift from the traditional method to modern technology. The solar panels whenever used for building
+                                they are helping to save lots of money that the individual are spending in the form of the electricity. The solar panels are also environment friendly and are also helping in the environment conservation by reducing the
+                                pollution towards it.</p>
+                            <p>Kindly contact us for more details regarding the product or the services. We are the leading <strong>Solar PV System Manufacturer</strong>, supplier and exporter in Ahmedabad, Gujarat that is providing the complete solution
+                                related to the Solar PV system and the other product that also at the exclusive price.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="footer-placeholder"></div>
+</body>
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        const headerPlaceholder = document.getElementById("home-placeholder");
+
+        // Fetch the navbar HTML file
+        fetch("header.html")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to load header");
+                }
+                return response.text();
+            })
+            .then((html) => {
+                // Insert the navbar content into the placeholder
+                headerPlaceholder.innerHTML = html;
+            })
+            .catch((error) => {
+                console.error("Error loading header:", error);
+            });
+    });
+
+    document.addEventListener("DOMContentLoaded", function() {
+        const headerPlaceholder = document.getElementById("footer-placeholder");
+
+        // Fetch the navbar HTML file
+        fetch("footer.html")
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error("Failed to load header");
+                }
+                return response.text();
+            })
+            .then((html) => {
+                // Insert the navbar content into the placeholder
+                headerPlaceholder.innerHTML = html;
+            })
+            .catch((error) => {
+                console.error("Error loading header:", error);
+            });
+    });
+</script>
+
+</html>
+</div>

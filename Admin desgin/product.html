@@ -84,6 +84,7 @@
                                 <th>Description</th>
                                 <th>Price</th>
                                 <th>Quantity</th>
+                                <th>Type</th>
                                 <th>Actions</th>
                             </tr>
                         </thead>
@@ -130,6 +131,13 @@
                                     <label for="productStock" class="form-label">Stock</label>
                                     <input type="number" id="productStock" class="form-control" min="1" required>
                                 </div>
+                                <div class="mb-3">
+                                    <label for="productType" class="form-label">Type</label>
+                                    <select id="productType" class="form-select" required>
+                                        <option value="solar_panal">Solar Panel</option>
+                                        <option value="inverter">Inverter</option>
+                                    </select>
+                                </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
@@ -171,6 +179,7 @@
                         <td>${product.description}</td>
                         <td>${product.price}</td>
                         <td>${product.stock}</td>
+                        <td>${product.type}</td>
                         <td>
                             <button class="btn btn-warning btn-sm" onclick="editProduct('${product.id}')">Edit</button>
                             <button class="btn btn-danger btn-sm" onclick="deleteProduct('${product.id}')">Delete</button>
@@ -191,12 +200,14 @@
             const description = document.getElementById("productDescription").value.trim();
             const price = document.getElementById("productPrice").value.trim();
             const stock = document.getElementById("productStock").value.trim();
+            const type = document.getElementById("productType").value.trim();
 
             const productData = {
                 name,
                 description,
                 price,
                 stock,
+                type,
                 is_delete: false
             };
             let url = "http://127.0.0.1:8000/products/";
@@ -247,6 +258,7 @@
                 document.getElementById("productDescription").value = product.description;
                 document.getElementById("productPrice").value = product.price;
                 document.getElementById("productStock").value = product.stock;
+                document.getElementById("productType").value = product.Type;
                 document.getElementById("modalTitle").innerText = "Edit product";
 
                 const ProductModal = new bootstrap.Modal(document.getElementById("ProductModal"));
