@@ -4,129 +4,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Solar Navbar</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        body {
-            margin: 0;
-            font-family: Arial, sans-serif;
-        }
-        
-        .top-bar {
-            background: green;
-            color: white;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 5px 20px;
-            font-size: 14px;
-        }
-        
-        .top-bar a {
-            color: white;
-            text-decoration: none;
-            margin-left: 10px;
-        }
-        
-        .main-nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: white;
-            padding: 10px 20px;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .logo {
-            font-size: 24px;
-            font-weight: bold;
-            color: green;
-        }
-        
-        .menu {
-            list-style: none;
-            display: flex;
-            padding: 0;
-            margin: 0;
-        }
-        
-        .menu li {
-            margin: 0 15px;
-        }
-        
-        .menu a {
-            text-decoration: none;
-            color: black;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-        
-        .menu a:hover {
-            color: green;
-        }
-        
-        @media (max-width: 768px) {
-            .menu {
-                display: none;
-                flex-direction: column;
-                background: white;
-                position: absolute;
-                top: 60px;
-                left: 0;
-                width: 100%;
-                box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
-            }
-            .menu.active {
-                display: flex;
-            }
-            .menu-toggle {
-                display: block;
-                font-size: 20px;
-                cursor: pointer;
-            }
-        }
-        
-        @media (min-width: 769px) {
-            .menu-toggle {
-                display: none;
-            }
-        }
-    </style>
+    <title>Upload Image</title>
 </head>
 
 <body>
-    <div class="top-bar">
-        <div>
-            <a href="#"><i class="fas fa-envelope"></i> info@gracerenew.com</a>
-            <a href="#"><i class="fas fa-phone"></i> +91 90994 62222</a>
-        </div>
-    </div>
-    <nav class="main-nav">
-        <div class="logo">Grace</div>
-        <div class="menu-toggle" onclick="toggleMenu()">
-            <i class="fas fa-bars"></i>
-        </div>
-        <ul class="menu">
-            <li><a href="#">Home</a></li>
-            <li><a href="#">About Us</a></li>
-            <li><a href="#">Clients</a></li>
-            <li><a href="#">Blog</a></li>
-            <li><a href="#">Contact Us</a></li>
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Knowledge</a></li>
-            <li><a href="#">Application</a></li>
-            <li><a href="#">Download</a></li>
-            <li><a href="#">Projects</a></li>
-            <li><a href="#">Career</a></li>
-            <li><a href="#" style="font-weight: bold;">DEALERSHIP</a></li>
-        </ul>
-    </nav>
-    <script>
-        function toggleMenu() {
-            document.querySelector(".menu").classList.toggle("active");
-        }
-    </script>
+    <form id="uploadForm" action="http://127.0.0.1:8000/upload" method="post" enctype="multipart/form-data">
+        <label for="image">Image:</label>
+        <input type="file" name="file" id="file">
+        <button type="submit" value="Upload">Upload</button>
+    </form>
+
 </body>
 
 </html>

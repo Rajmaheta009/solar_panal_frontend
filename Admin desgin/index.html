@@ -107,6 +107,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Image</th>
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Price</th>
@@ -201,8 +202,10 @@
             p.forEach(product => {
                 count++;
                 const row = document.createElement("tr");
+                console.log(product.image)
                 row.innerHTML = `
                         <td>${count}</td>
+                        <td><img src="${product.image}" alt="Product Image" width="80" height="80"></td>
                         <td>${product.name}</td>
                         <td>${product.description}</td>
                         <td>${product.price}</td>

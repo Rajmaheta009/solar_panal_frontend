@@ -80,6 +80,7 @@
                         <thead>
                             <tr>
                                 <th>ID</th>
+                                <th>Image</th>
                                 <th>Name</th>
                                 <th>Description</th>
                                 <th>Price</th>
@@ -113,8 +114,15 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-                            <form id="ProductForm">
+                            <form id="ProductForm" enctype="multipart/form-data" onsubmit="addOrUpdateProduct(event)">
                                 <input type="hidden" id="productId">
+                                <input type="hidden" id="currentImageName" name="currentImageName">
+                                <!-- File Input -->
+                                <div class="mb-3">
+                                    <label for="productImage" class="form-label">Product Image</label>
+                                    <input type="file" class="form-control" id="productImage" name="file" accept="image/*" onchange="previewImage(event)" required>
+                                    <img id="productImagePreview" src="" alt="Product Image" style="max-width: 150px; display: none; border: 1px solid #ddd; padding: 5px;">
+                                </div>
                                 <div class="mb-3">
                                     <label for="productName" class="form-label">Name</label>
                                     <input type="text" class="form-control" id="productName" required>
@@ -140,6 +148,7 @@
                                 </div>
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
+
                         </div>
                     </div>
                 </div>
@@ -156,16 +165,13 @@
                 const response = await fetch("http://127.0.0.1:8000/products/");
                 if (!response.ok) throw new Error("Failed to fetch products");
 
-
                 const data = await response.json();
-
                 const p = data.products;
-
                 const tableBody = document.querySelector("#productTable tbody");
                 tableBody.innerHTML = "";
 
                 if (!p.length) {
-                    tableBody.innerHTML = "<tr><td colspan='6' class='text-center'>No products found</td></tr>";
+                    tableBody.innerHTML = "<tr><td colspan='8' class='text-center'>No products found</td></tr>";
                     return;
                 }
 
@@ -175,6 +181,7 @@
                     const row = document.createElement("tr");
                     row.innerHTML = `
                         <td>${count}</td>
+                        <td><img src="${product.image}" alt="Product Image" width="80" height="80"></td>
                         <td>${product.name}</td>
                         <td>${product.description}</td>
                         <td>${product.price}</td>
@@ -193,79 +200,92 @@
         }
 
         async function addOrUpdateProduct(event) {
-            event.preventDefault();
+            event.preventDefault(); // Prevent default form submission
 
-            const productId = document.getElementById("productId").value.trim();
-            const name = document.getElementById("productName").value.trim();
-            const description = document.getElementById("productDescription").value.trim();
-            const price = document.getElementById("productPrice").value.trim();
-            const stock = document.getElementById("productStock").value.trim();
-            const type = document.getElementById("productType").value.trim();
+            var fileInput = document.getElementById("productImage"); // Correct input
+            var file = fileInput.files[0];
 
-            const productData = {
-                name,
-                description,
-                price,
-                stock,
-                type,
-                is_delete: false
-            };
+            var productId = document.getElementById("productId").value;
+            var productName = document.getElementById("productName").value;
+            var productDescription = document.getElementById("productDescription").value;
+            var productPrice = document.getElementById("productPrice").value;
+            var productStock = document.getElementById("productStock").value;
+            var productType = document.getElementById("productType").value;
+
+            var fmData = new FormData();
+            if (file) {
+                fmData.append("image", file); // Ensure backend expects this key
+            }
+            fmData.append("name", productName);
+            fmData.append("description", productDescription);
+            fmData.append("price", productPrice);
+            fmData.append("stock", productStock);
+            fmData.append("type", productType);
+
             let url = "http://127.0.0.1:8000/products/";
-            let method = "POST";
+            let method = "POST"; // Default: adding a new product
 
             if (productId) {
                 url = `http://127.0.0.1:8000/products/${productId}`;
-                method = "PUT";
+                method = "PUT"; // Update product
+                fmData.append("id", productId);
             }
 
             try {
                 const response = await fetch(url, {
                     method: method,
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                    body: JSON.stringify(productData),
+                    body: fmData,
                 });
 
                 if (!response.ok) throw new Error("Failed to save product");
 
-
-                const productModal = bootstrap.Modal.getInstance(document.getElementById("ProductModal"));
+                // Close modal and refresh product list
+                var productModal = bootstrap.Modal.getInstance(document.getElementById("ProductModal"));
                 productModal.hide();
+                fetchProducts(); // Refresh product list
 
-                fetchProducts();
+                // Reset form
+                document.getElementById("ProductForm").reset();
+                document.getElementById("productId").value = "";
 
             } catch (error) {
                 console.error("Error saving product:", error);
             }
         }
 
-        // Attach function to form
-        document.getElementById("ProductForm").addEventListener("submit", addOrUpdateProduct);
-
         async function editProduct(productId) {
-
             try {
-                const response = await fetch(`http://127.0.0.1:8000/products/${productId}`, {
-                    method: "GET",
-                });
-                if (!response.ok) throw new Error("Failed to fetch product data");
-                const data = await response.json();
-                const product = data.product;
+                const response = await fetch(`http://127.0.0.1:8000/products/${productId}`);
+                if (!response.ok) throw new Error("Failed to fetch product details");
 
+                const product = await response.json(); // Now this is the actual product object, not an array
+                console.log(product.image);
+                // Populate form fields
                 document.getElementById("productId").value = product.id;
-                document.getElementById("productName").value = product.name;
-                document.getElementById("productDescription").value = product.description;
-                document.getElementById("productPrice").value = product.price;
-                document.getElementById("productStock").value = product.stock;
-                document.getElementById("productType").value = product.Type;
-                document.getElementById("modalTitle").innerText = "Edit product";
+                document.getElementById("productName").value = product.name || "";
+                document.getElementById("productDescription").value = product.description || "";
+                document.getElementById("productPrice").value = product.price || "";
+                document.getElementById("productStock").value = product.stock || "";
+                document.getElementById("productType").value = product.type || "";
 
-                const ProductModal = new bootstrap.Modal(document.getElementById("ProductModal"));
-                ProductModal.show();
+                // Set the current image name in the hidden input
+                document.getElementById("currentImageName").value = product.image || "";
+
+                // Display the existing product image
+                const imagePreview = document.getElementById("productImagePreview");
+                if (product.image) {
+                    imagePreview.src = `http://127.0.0.1:8000/static/${product.image}`;
+                    imagePreview.style.display = "block";
+                } else {
+                    imagePreview.style.display = "none"; // Hide if no image
+                }
+                document.getElementById("modalTitle").innerText = "Edit Product";
+                // Open the modal
+                var productModal = new bootstrap.Modal(document.getElementById("ProductModal"));
+                productModal.show();
 
             } catch (error) {
-                console.error("Error fetching product data:", error);
+                console.error("Error fetching product details:", error);
             }
         }
 
@@ -277,30 +297,25 @@
                 });
                 if (!response.ok) throw new Error("Failed to delete product");
                 fetchProducts();
-                location.reload(); // Refresh the page to see updates
             } catch (error) {
                 console.error("Error deleting product:", error);
             }
         }
+
         document.getElementById("addProductBtn").addEventListener("click", function() {
-            document.getElementById("modalTitle").innerText = "Add Product"; // Update modal title
-            document.getElementById("ProductForm").reset(); // Clear form fields
-            document.getElementById("productId").value = ""; // Clear hidden userId field
-        });
-
-
-        document.getElementById("ProductForm").addEventListener("submit", function(e) {
-            e.preventDefault();
-            addOrUpdateUser();
+            document.getElementById("modalTitle").innerText = "Add Product";
+            document.getElementById("ProductForm").reset();
+            document.getElementById("productId").value = "";
         });
 
         document.addEventListener("DOMContentLoaded", fetchProducts);
 
         function logoutAdmin() {
-            localStorage.removeItem("adminToken"); // Remove token
-            window.location.href = "../login_registration/index.html"; // Redirect to login
+            localStorage.removeItem("adminToken");
+            window.location.href = "../login_registration/index.html";
         }
     </script>
+
 </body>
 
 </html>
