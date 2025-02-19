@@ -73,12 +73,6 @@
         border: 1px solid orangered;
     }
     
-    .images-part h4 {
-        text-align: center;
-        margin: 16px 0 5px 0;
-        line-height: 22px;
-    }
-    
     .images-part h4 a {
         font-size: 16px;
         color: #404040;

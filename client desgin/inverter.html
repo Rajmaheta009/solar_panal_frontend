@@ -46,24 +46,7 @@
     <div class="well-part">
         <div class="container">
             <div class="row wel-text">
-                <div class="col-sm-4">
-                    <div class="images-part text-center">
-                        <a href="single_phase_inverter.html"><img src="https://gracerenew.com/images/single-phase-inverter.webp" alt="Single Phase Inverter Manufacturer"></a>
-                        <h4><a href="single_phase_inverter.html">SINGLE PHASE INVERTER</a></h4>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="images-part text-center">
-                        <a href="three-phase-inverter.html"><img src="https://gracerenew.com/images/three-phase-inverter.webp" alt="Three Phase Inverter Manufacturer"></a>
-                        <h4><a href="three-phase-inverter.html">THREE PHASE INVERTER</a></h4>
-                    </div>
-                </div>
-                <div class="col-sm-4">
-                    <div class="images-part text-center">
-                        <a href="micro-inverter.html"><img src="https://gracerenew.com/images/micro-inverter.webp" alt="Micro Inverter Supplier"></a>
-                        <h4><a href="micro-inverter.html">MICRO INVERTER</a></h4>
-                    </div>
-                </div>
+                <div id="panel-container" class="row"></div>
             </div>
         </div>
     </div>
@@ -138,6 +121,47 @@
             .catch((error) => {
                 console.error("Error loading header:", error);
             });
+    });
+    document.addEventListener("DOMContentLoaded", function() {
+        async function fetchProducts() {
+            try {
+                const response = await fetch("http://127.0.0.1:8000/products/");
+                if (!response.ok) throw new Error("Failed to fetch products");
+
+                const data = await response.json();
+                const p = data.products;
+
+                let container = document.getElementById("panel-container"); // Make sure this div exists in HTML
+                container.innerHTML = ""; // Clear existing content
+
+                // Filter products where type is 'solar'
+                const solarPanels = p.filter(panel => panel.type.toLowerCase() === "inverter");
+
+                if (solarPanels.length === 0) {
+                    container.innerHTML = `<div class="alert alert-warning">No solar products found.</div>`;
+                    return;
+                }
+
+                solarPanels.forEach(panel => {
+                    let panelHTML = `
+                        <div class="col-sm-4">
+                            <div class="images-part text-center">
+                                <a href="inverter_detail.html?id=${panel.id}">
+                                    <img src="${panel.image}" alt="${panel.name}">
+                                </a>
+                                <h4><a href="inverter_detail.html?id=${panel.id}">${panel.name}</a></h4>
+                            </div>
+                        </div>
+                    `;
+                    container.innerHTML += panelHTML;
+                });
+            } catch (error) {
+                console.error("Error fetching panels:", error);
+                container.innerHTML = `<div class="alert alert-danger">Failed to load products.</div>`;
+            }
+        }
+
+        fetchProducts(); // Call the function inside DOMContentLoaded
     });
 </script>
 
