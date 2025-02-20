@@ -224,13 +224,15 @@
             userData.password = password;
         }
         const a_token = localStorage.getItem("authToken"); // This will print the stored token in the console
+        const u_name = localStorage.getItem("username");
 
         try {
             const response = await fetch(url, {
                 method: method,
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${a_token}` // Include token
+                    "Authorization": `Bearer ${a_token}`, // Include token
+                    "User-Name": u_name
                 },
                 body: JSON.stringify(userData),
             });
@@ -296,6 +298,7 @@
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${a_token}`, // Include token
+                    "User-Name": localStorage.getItem("username")
                 },
             });
             if (response.ok) {

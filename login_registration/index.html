@@ -354,6 +354,7 @@
                     alert("Login successful!");
                     if (data.role === "admin") {
                         localStorage.setItem("authToken", data.access_token);
+                        localStorage.setItem("username", data.username);
                         window.location.href = "../Admin desgin/index.html"; // Redirect to admin panel
                     } else {
                         window.location.href = "../client desgin/index.html"; // Redirect to client dashboard

@@ -31,7 +31,7 @@
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-                    <li><a class="dropdown-item" href="login.html" onclick="logoutAdmin">Logout</a></li>
+                    <li><a class="dropdown-item" href="../login_registration/index.html" onclick="logoutAdmin">Logout</a></li>
                 </ul>
             </li>
         </ul>
@@ -232,9 +232,13 @@
             }
 
             try {
+                const username = localStorage.getItem("username"); // Get the username from localStorage
                 const response = await fetch(url, {
                     method: method,
                     body: fmData,
+                    headers: {
+                        "User-Name": username // ✅ Send username in headers
+                    },
                 });
 
                 if (!response.ok) throw new Error("Failed to save product");
@@ -295,6 +299,9 @@
             try {
                 const response = await fetch(`http://127.0.0.1:8000/products/${productId}`, {
                     method: "DELETE",
+                    headers: {
+                        "User-Name": localStorage.getItem("username"), // ✅ Send username in headers
+                    },
                 });
                 if (!response.ok) throw new Error("Failed to delete product");
                 fetchProducts();
